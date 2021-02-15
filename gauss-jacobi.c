@@ -8,11 +8,13 @@ int isDominant(int m,int n,float a[m][n])
         for(int j=0;j<n;++j)
         {
         if(i==j)
-            s+=a[i][j];//adding diagonal elements
+            s+=abs(a[i][j]);//adding diagonal elements
         else
-            s1+=a[i][j];//adding non-diagonal elements
+            s1+=abs(a[i][j]);//adding non-diagonal elements
         }
     }
+    printf("\n\n |a[i][i]|              = \t%f",s);
+    printf("\n\n %c|a[i][j]|(i != j)    = \t%f",484,s1);
     if(s>s1)//checking if the matrix is diagonally dominant
         return 1;
     else
@@ -39,15 +41,18 @@ int main()
     }
     if(isDominant(m,n,a)==1)
     {
-        printf("\n\n>>>>>Gauss-Jacobi Method cann't be applied since Matrix is not Diagonally Dominant<<<<<");
+        
+        printf("\n\nSince,  |a[i][i]|   <   %c|a[i][j]|(i != j)",484);
+        printf("\n\n>>>>> Gauss-Jacobi Method cann't be applied since Matrix is not Diagonally Dominant <<<<<");
     }
     else
     {
-        printf("\n\n>>>>>Matrix is diagonally dominant<<<<<");
+        printf("\n\nSince,  |a[i][i]|   >   %c|a[i][j]|(i != j)",484);
+        printf("\n\n>>>>> Matrix is diagonally dominant <<<<<");
         float x=0.0,y=0.0,z=0.0,x1=0.0,y1=0.0,z1=0.0;
         for(int i=0;i<10;++i)
         {
-            printf("\n\n>>>>>ITERATION %d (for k = %d) <<<<<",i+1,i);
+            printf("\n\n>>>>> ITERATION %d (for k = %d) <<<<<",i+1,i);
 
             x1=(a[0][n-1]-y*a[0][1]-z*a[0][2])/a[0][0];
             y1=(a[1][n-1]-x*a[1][0]-z*a[1][2])/a[1][1];
